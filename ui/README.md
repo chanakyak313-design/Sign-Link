@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Sign-Link: Real-Time Sign Language Translator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hey there! This is my mini-project for the 3-2 academic semester. Sign-Link is a web-based application designed to bridge the communication gap for the hearing and speech impaired by converting hand gestures into digital text in real-time.
 
-## Available Scripts
+I wanted to focus on building a clean, fast user interface that can handle a live camera stream smoothly while laying down the groundwork for an AI processing pipeline.
 
-In the project directory, you can run:
+## Why I Built This & How It Works
 
-### `npm start`
+Most communication tools aren't built with accessibility in mind. With Sign-Link, the goal is to create a seamless dashboard where a user can turn on their camera, make a sign, and instantly see the translated text on the screen.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Here is the basic engineering flow under the hood:
+1. The app uses the webcam to capture video frames at regular intervals right from the browser.
+2. These frames are converted into data strings so they can be processed.
+3. The underlying concept relies on tracking 21 specific coordinates on the human hand (using hand landmark models like MediaPipe) to read the geometry and angles of the fingers.
+4. A neural network classification matrix then matches those coordinates against trained sign language data to output the correct word.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack Used
+- Frontend Framework: React.js
+- Styling: Custom CSS (designed with a sleek dark mode for a better user experience)
+- Camera Integration: react-webcam
 
-### `npm test`
+## How to Set Up and Run the Project Locally
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If you want to clone this repository and run it on your own machine, follow these steps:
 
-### `npm run build`
+1. Open your terminal and navigate into the UI folder:
+   cd ui
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install all the necessary packages and dependencies:
+   npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Run the development server:
+   npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This will automatically open up localhost:3000 in your browser where you can test out the webcam feed and the translation panel.
