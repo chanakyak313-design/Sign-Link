@@ -3,47 +3,38 @@ import Webcam from 'react-webcam';
 import './App.css';
 
 function App() {
-  // Reference hooks to capture live DOM node streams
   const webcamRef = useRef(null);
   const intervalRef = useRef(null); 
 
-  // UI Component State Engines
   const [isDetecting, setIsDetecting] = useState(false);
   const [outputContext, setOutputContext] = useState("System idle. Click 'Start Detection'...");
 
-  // Sign Language Translation System Vocabulary Matrix
   const mockSigns = ["HELLO", "THANK YOU", "I NEED HELP", "WELCOME", "SIGN-LINK ACTIVE"];
 
   const toggleDetection = () => {
     if (!isDetecting) {
       setIsDetecting(true);
-      setOutputContext("Warming up inference pipeline... Synchronizing framework variables.");
+      setOutputContext("Warming up inference pipeline...");
 
-      // Set up the high-frequency frame loop processing logic
+      // Simulate real-time frame processing loop
       intervalRef.current = setInterval(() => {
         if (webcamRef.current) {
-          // 1. Extract the raw Base64 visual matrix data package from the lens
           const imageSrc = webcamRef.current.getScreenshot();
           
           if (imageSrc) {
-            // 2. Select a target gesture from the system dictionary array
             const randomSign = mockSigns[Math.floor(Math.random() * mockSigns.length)];
-            
-            // 3. Generate a slice of the raw matrix data string to show real data streaming
             const dataPreview = imageSrc.substring(23, 53); 
             
-            // 4. Update the screen state layout dynamically
             setOutputContext(`[DETECTED]: ${randomSign}\n[MATRIX]: data:image/jpeg;base64,${dataPreview}...`);
-            console.log("Processing Data Payload Vector: ", imageSrc.substring(0, 40));
+            console.log("Processing frame data: ", imageSrc.substring(0, 40));
           }
         }
-      }, 1200); // Processes a new frame slice every 1.2 seconds
+      }, 1200);
 
     } else {
       setIsDetecting(false);
       setOutputContext("System idle. Click 'Start Detection'...");
       
-      // Clear interval loop safely to avoid background memory overhead
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
@@ -52,7 +43,6 @@ function App() {
 
   return (
     <div className="dashboard-container">
-      {/* Navigation Header */}
       <nav className="navbar">
         <h1>Sign-Link</h1>
         <div className={`status-badge ${isDetecting ? 'active' : 'idle'}`}>
@@ -60,7 +50,6 @@ function App() {
         </div>
       </nav>
 
-      {/* Main Workspace Grid */}
       <main className="workspace">
         <div className="camera-section">
           <div className="video-container">
@@ -81,7 +70,6 @@ function App() {
           </div>
         </div>
 
-        {/* AI Analytics Sideboard */}
         <div className="output-section">
           <h3>Translated Text Output</h3>
           <div className="text-box">
