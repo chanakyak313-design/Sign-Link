@@ -1,6 +1,6 @@
 # Sign-Link: Real-Time Sign Language Translator
 
-Hey there! This is my mini-project for the 3-2 academic semester. Sign-Link is a web-based application designed to bridge the communication gap for the hearing and speech impaired by converting hand gestures into digital text in real-time.
+Hey there! This is project . Sign-Link is a web-based application designed to bridge the communication gap for the hearing and speech impaired by converting hand gestures into digital text in real-time.
 
 I wanted to focus on building a clean, fast user interface that can handle a live camera stream smoothly while laying down the groundwork for an AI processing pipeline.
 
